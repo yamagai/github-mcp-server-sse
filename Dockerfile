@@ -17,6 +17,8 @@ RUN CGO_ENABLED=0 GOOS=linux go build -o github-mcp-server-sse .
 # 本番用の小さなイメージを使用
 FROM debian:bullseye-slim
 
+RUN apt update && apt install -y ca-certificates
+
 WORKDIR /app
 
 # ビルドしたバイナリをコピー
