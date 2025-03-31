@@ -56,6 +56,27 @@ SSEモードでは、HTTPリクエストのAuthorizationヘッダーにGitHubト
 curl -H "Authorization: Bearer YOUR_GITHUB_TOKEN" http://localhost:8080/events
 ```
 
+### Dockerコンテナでの使用
+
+SSEモードでサーバーを実行するDockerコンテナが提供されています。
+
+#### ビルド方法
+
+```bash
+# Dockerイメージをビルド
+docker build -t github-mcp-server-sse .
+```
+
+#### 実行方法
+
+```bash
+# 環境変数でGitHubトークンを指定して実行
+docker run -p 8080:8080 -e GITHUB_TOKEN=your_github_token github-mcp-server-sse
+
+# カスタムポートで実行（環境変数でポートを指定）
+docker run -p 3000:3000 -e GITHUB_TOKEN=your_github_token -e PORT=3000 github-mcp-server-sse
+```
+
 ## ツール一覧
 
 | ツール名 | 説明 |
@@ -96,4 +117,4 @@ go test ./...
 
 ## ライセンス
 
-MIT 
+MIT
